@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Chúc mừng 20/10</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fffafa);
+            overflow: hidden;
+            font-family: "Mali", cursive;
+            height: 100vh;
+            position: relative;
+        }
+
+        .center-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.9));
+            padding: 40px 50px;
+            border-radius: 30px;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #c2185b;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(216, 27, 96, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            z-index: 1;
+            max-width: 90%;
+            animation: pulse 3s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        .center-message strong {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #d81b60, #f06292, #d81b60);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 99;
+            display: none;
+            animation: fadeInOverlay 0.3s ease;
+        }
+
+        @keyframes fadeInOverlay {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f8 100%);
+            border-radius: 25px;
+            box-shadow: 0 25px 80px rgba(216, 27, 96, 0.4);
+            padding: 30px;
+            text-align: center;
+            z-index: 100;
+            width: 90%;
+            max-width: 400px;
+            display: none;
+            animation: popupShow 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes popupShow {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5) rotate(-5deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+        }
+
+        /* .popup::before {
+            content: '🌸';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            animation: bounce 1s ease-in-out infinite;
+        } */
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .popup-content {
+            margin-top: 20px;
+        }
+
+        .popup img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
+        }
+
+        .popup p {
+            font-size: 1.1rem;
+            color: #d81b60;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            background: linear-gradient(135deg, #d81b60 0%, #f06292 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(216, 27, 96, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .popup button:hover {
+            background: linear-gradient(135deg, #ad1457 0%, #e91e63 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.5);
+        }
+
+        .popup button:active {
+            transform: translateY(0);
+        }
+
+        .falling-letter {
+            position: absolute;
+            top: -100px;
+            width: 50px;
+            height: auto;
+            animation: fall linear;
+            cursor: pointer;
+            user-select: none;
+            z-index: 2;
+            animation-duration: 8s;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .falling-letter:hover {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 10px 20px rgba(216, 27, 96, 0.4));
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            20% {
+                transform: translateY(20vh) translateX(-20px) rotate(-10deg);
+            }
+
+            40% {
+                transform: translateY(40vh) translateX(15px) rotate(8deg);
+            }
+
+            60% {
+                transform: translateY(60vh) translateX(-15px) rotate(-6deg);
+            }
+
+            80% {
+                transform: translateY(80vh) translateX(10px) rotate(4deg);
+            }
+
+            100% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes letterClick {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.3) rotate(360deg);
+            }
+
+            100% {
+                transform: scale(0) rotate(720deg);
+            }
+        }
+
+        .letter-clicked {
+            animation: letterClick 0.6s ease-out forwards !important;
+        }
+
+        .heart {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            animation: explode 2s ease-out forwards;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(-50%, -50%) translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .center-gif {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            max-width: 40vw;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* ------------------------------
+        Responsive cho màn hình nhỏ
+        ---------------------------------- */
+        @media (max-width: 768px) {
+            .center-message {
+                width: calc(100% - 20px);
+                max-width: none;
+                padding: 20px 15px;
+                font-size: 1.1rem;
+                border-radius: 20px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .center-message strong {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+
+            .popup {
+                width: 90%;
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .popup img {
+                border-radius: 10px;
+                margin-bottom: 15px;
+            }
+
+            .popup p {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .popup button {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            }
+
+            .falling-letter {
+                width: 40px;
+                animation-duration: 9s;
+            }
+
+            .heart {
+                font-size: 18px !important;
+            }
+
+            .falling-letter::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Thông điệp chúc mừng-->
+    <div class="center-message">
+        <strong>Chúc mừng 20-10</strong> <!--Sửa tiêu đề chúc mừng ở đây-->
+        <span id="centerText">
+            Ngày Phụ nữ Việt Nam<br> <!-- Sử lời nhắn hiển thị đầu ở đây-->
+            Mong Chị luôn rạng rỡ như những bó hoa!
+        </span>
+    </div>
+
+    <!-- Ảnh động trang trí -->
+    <img src="https://th.bing.com/th/id/R.e6f27054d124b3f007ce1a606b84c3e3?rik=%2fziXM2o%2fOmDg4Q&pid=ImgRaw&r=0" alt="GIF" class="center-gif" /> <!-- Thay ảnh động bên dưới -->
+
+    <!-- Hiển thị lời chúc -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <img id="popupImage" src="" alt="chúc Chị ngày càng thành công xinh đẹp nhé">
+            <p id="popupMessage"> chúc Chị ngày càng thành công xinh đẹp nhé</p>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Nhạc nền  -->
+    <audio id="player" src="https://s143.convertio.me/p/7Aa7VwXfyN31RDQiMHgSRw/96dc28eeafa7be71580bf19f7416d3fd/video-nh%E1%BA%A1c.mp3"></audio> <!-- Sửa bài hát ở đây -->
+
+    <script>
+        //Sửa ảnh và lời nhắn ở đây
+        const messages = [
+            {
+                img: "https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/565108065_1360818098934798_1632315096688945709_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH8TDA1BAfzzQ-YhngkpSTczDyOFYxPHhPMPI4VjE8eEzBHcwBrFpSw9Sv743buqHP2J3bNHKdJ6COaFbZvBev8&_nc_ohc=rSimMX-i8ygQ7kNvwG676R7&_nc_oc=AdndmJLQJHdoRU-BVPBS_j-1GPgud99WJjwE9tExAbJlcETKbx49odgGsERN0ZbDAok&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=Tad7NjTbkgFtECIMNjk6jA&oh=00_AfcLnQM0hkP28jF9LzP0mWulXE52NQO61xJAGRTaHO7sXg&oe=68FAFD18", //Thay ảnh
+                text: "Chúc bạn luôn vui vẻ, xinh đẹp và ngập tràn yêu thương!" //Thay lời nhắn
+            },
+            {
+                img: "https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/565610922_1360817902268151_8673412777712097798_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEeNu5xaskI6srZEMXEIzbOdWGMlh5ki1N1YYyWHmSLU-2cidBnZWbR6OgIeZauPKS6u7VJGd4YKU7KbyWWcA85&_nc_ohc=MxB4ystICXcQ7kNvwHODziU&_nc_oc=AdlIYqp3eG1P4X3wvwTLicWxZUewYW8JC1P2wHEDSoWoYn4bG5fFLAg18uPMfih3xvs&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=odY8jY_F-2bWhoIN3eHR1Q&oh=00_Afc2d97kqpPQo4eM1RjvXGiXTmzl02lJZ7trqlckVuz5_Q&oe=68FB304E",
+                text: "Mỗi ngày của Chị đều là một đoá hoa nở rộ."
+            },
+            {
+                img: "https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/568641322_1360817885601486_5461552303172100773_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHOw7DwWPzKHgZF4OVQVUZpzdLQRZFus8jN0tBFkW6zyLGpRCezm5pJSNpMH6DexemFGdalzE44_-AuVwJxu-qu&_nc_ohc=ORz8C1snlqkQ7kNvwFJi6Ji&_nc_oc=AdlT38JA0L5WJFviIkkAn2n7ZQXH-tlfVqZHtvANIqcaiCrmtKlwQ7mgFNZVGh7IYsk&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=odY8jY_F-2bWhoIN3eHR1Q&oh=00_Afd4yxf9o5Gx-g0VBul84nTJNsH0JsxHVPQHW0Jn-Ep0xg&oe=68FB071D",
+                text: "Cảm ơn Chị vì đã luôn mạnh mẽ và tuyệt vời như thế!"
+            },
+            {
+                img: "https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/565195504_1360817958934812_6857514913016396385_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGNi7DflB12JF7VnktFq8rESdyTU3FtY59J3JNTcW1jn8iZmSEyq4995VPwuTW1C1JBOUckyafVObl1TMe_rRLD&_nc_ohc=gmOA78RC6mYQ7kNvwGVyG6W&_nc_oc=Adnhj6hZNm5l1LVPNj3LuwQmYwLEQLqrDWIaSWRGeKZnCC6UEhMwibqzsz7ZuRXxZmU&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=odY8jY_F-2bWhoIN3eHR1Q&oh=00_Afd_qeg1oat3VVlFVnLA3Uqiy-7BHRdm8ngi0R-fHJ7iDg&oe=68FB3018",
+                text: "Chúc Chị một ngày 20/10 thật hạnh phúc và trọn vẹn! "
+            },
+            {
+                img: "https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/565323764_1360818068934801_5812768179653389865_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFVv9NdfIZ4azna5d4laQJvtsTsprv9oXy2xOymu_2hfOVfAZ9L915-Vi5sM7F09VUx_JAG_Kv9hQX3SfC0rAYU&_nc_ohc=YWM7m4tsyQMQ7kNvwFT2Kv0&_nc_oc=AdknZQpEVULr167wTWJacpGrEQpGca3CBXOC73c6IT0rJcj7FA-2hsGoUj_PWy8Gjlw&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=DYyIUANdHg8M4YuOyvH-iQ&oh=00_AfeIYEMoOVyPR78L4cDqac3TH6VA6gqngbpwm1J_aBxBoA&oe=68FB0492",
+                text: "Chị là món quà tuyệt vời nhất mà cuộc sống mang lại! "
+            }
+        ];
+
+        let currentMessageIndex = 0;
+        let hasFirstLetterFallen = false;
+
+        const popup = document.getElementById("popup");
+        const overlay = document.getElementById("overlay");
+        const popupImage = document.getElementById("popupImage");
+        const popupMessage = document.getElementById("popupMessage");
+        const centerText = document.getElementById("centerText");
+        //Thay những ảnh rơi từ trên xuống ở đây
+        const letterImages = [
+            "https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/565610922_1360817902268151_8673412777712097798_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEeNu5xaskI6srZEMXEIzbOdWGMlh5ki1N1YYyWHmSLU-2cidBnZWbR6OgIeZauPKS6u7VJGd4YKU7KbyWWcA85&_nc_ohc=MxB4ystICXcQ7kNvwHODziU&_nc_oc=AdlIYqp3eG1P4X3wvwTLicWxZUewYW8JC1P2wHEDSoWoYn4bG5fFLAg18uPMfih3xvs&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=mGDyoRkA7gmfJgZ33GTBuQ&oh=00_Aff2ni2gb08h08GTFF_vszSUiHgUpbWOAMj7npXRga1Efg&oe=68FAF80E",
+            "https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/565154132_1360817872268154_525437898869610984_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHcjRJFMsiQKYXjbe2_2E3wIN8eZ2fdo7kg3x5nZ92juVUE-tpwgxMTfgyTLjEj83cU6QTuiWvKnieaPgOj9aVf&_nc_ohc=1Xcfb3QGjxgQ7kNvwGsbKWs&_nc_oc=AdnNsBn6eQ5d1wQaAhZg7ikuSecGPEXkdI-KR56QnJHBzm9jMy1_vLnzS61LM6_Ea_Y&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=gz5U3q2XUZMg0ifuGdF5TA&oh=00_AfcnUr1pqv4ekwIIW2qskcDAaAR9R-5yTm12tQHxqHWraQ&oe=68FB2298",
+            "https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/568641322_1360817885601486_5461552303172100773_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHOw7DwWPzKHgZF4OVQVUZpzdLQRZFus8jN0tBFkW6zyLGpRCezm5pJSNpMH6DexemFGdalzE44_-AuVwJxu-qu&_nc_ohc=ORz8C1snlqkQ7kNvwFJi6Ji&_nc_oc=AdlT38JA0L5WJFviIkkAn2n7ZQXH-tlfVqZHtvANIqcaiCrmtKlwQ7mgFNZVGh7IYsk&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=TSOMz8ARCz15QQ410c4XIg&oh=00_AfdBf_8HCUpqZwdkAtwlYKTxfAGaIb7Vjz-KHXe6BIiVIg&oe=68FB071D",
+            "https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/565195504_1360817958934812_6857514913016396385_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGNi7DflB12JF7VnktFq8rESdyTU3FtY59J3JNTcW1jn8iZmSEyq4995VPwuTW1C1JBOUckyafVObl1TMe_rRLD&_nc_ohc=gmOA78RC6mYQ7kNvwGVyG6W&_nc_oc=Adnhj6hZNm5l1LVPNj3LuwQmYwLEQLqrDWIaSWRGeKZnCC6UEhMwibqzsz7ZuRXxZmU&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=vNH-jlGJoyZ5OyxbQgFj6A&oh=00_AfflRhSzf41Hhec9F0H2LxsvRUtgmkLEWtn6uoFj4lOzLg&oe=68FAF7D8",
+            "https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/564535067_1360817968934811_2284585530472195928_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGR3MvG35fyX9JiKiwmviP61f8_M-syKozV_z8z6zIqjO2X03mawH2VtO666DfblskZmDSLzqVTf1iLm_Y_1pK2&_nc_ohc=K33NMHWMOxsQ7kNvwHhBWZ9&_nc_oc=AdlKkuwVoeSJQBecZp_GmyiD3bRxk5rFbghLJiomtOhAAsbuLzUQ_kK2uvOMOhVhVzg&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=VA3PkDHMmz_VGpXqzLVcRQ&oh=00_AfdQ5PplMUEXzTp3VSVCj56Kp7EkIrrmNsuKqk_Oz98ndQ&oe=68FB064B",
+            "https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/566199463_1360818008934807_1679863045310503774_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEUK5DycvgC6RQBhtMUhxx-JzcyUsMii78nNzJSwyKLv9kMq9mGxxmVTLkEQZUh5dfAJXEazvE4431akdgVZAR3&_nc_ohc=GwgHt-oc528Q7kNvwGwYgVU&_nc_oc=AdnlMBRK0Wpaz_BipuOdunop1Ya47J1ZxNqLU9O2umbrtJZFZ3CT8p7FaAqDJIJe0yE&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=_DvlQ6nVL0hSMloG-W1Fpw&oh=00_AffOiViQ3L4vKP9Iu9qzIz5wXDETB6SfKb3XL7L-twgQWQ&oe=68FB22A1",
+        ];
+
+        function createHeartExplosion(x, y) {
+            //Thay icon khi ấn thư, hoa, quà
+            const hearts = ['💗'];
+            const numHearts = 12;
+
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+
+                const angle = (Math.PI * 2 / numHearts) * i;
+                const distance = Math.random() * 80 + 40;
+
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
+                heart.style.setProperty('--dy', Math.sin(angle) * distance + 'px');
+                heart.style.fontSize = (Math.random() * 10 + 20) + 'px';
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+        }
+
+        function createFallingLetter() {
+            const letter = document.createElement("img");
+            const randomImage = letterImages[Math.floor(Math.random() * letterImages.length)];
+            letter.src = randomImage;
+            letter.classList.add("falling-letter");
+            letter.style.left = Math.random() * (window.innerWidth - 50) + "px";
+            letter.addEventListener("click", (e) => {
+                createHeartExplosion(e.clientX, e.clientY);
+                letter.classList.add('letter-clicked');
+                setTimeout(() => {
+                    showPopup();
+                }, 300);
+            });
+
+            document.body.appendChild(letter);
+
+            setTimeout(() => {
+                letter.remove();
+            }, 8000);
+        }
+
+        function showPopup() {
+            const message = messages[currentMessageIndex];
+            popupImage.src = message.img;
+            popupMessage.textContent = message.text;
+            popup.style.display = "block";
+            overlay.classList.add("active");
+
+            popup.dataset.currentMessage = message.text;
+
+            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+        }
+
+        function closePopup() {
+            popup.style.display = "none";
+            overlay.classList.remove("active");
+
+            if (popup.dataset.currentMessage) {
+                centerText.innerHTML = popup.dataset.currentMessage;
+            }
+        }
+
+        document.body.addEventListener("click", function () {
+            const player = document.getElementById("player");
+            if (player.paused) {
+                player.play();
+            }
+        });
+
+        overlay.addEventListener("click", closePopup);
+        setInterval(() => {
+            createFallingLetter();
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
